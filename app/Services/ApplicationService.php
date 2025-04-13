@@ -8,7 +8,7 @@ class ApplicationService
 {
     public function getAllApplications()
     {
-        return Application::all();
+        return Application::with('cvs:id,full_name')->get();
     }
 
     public function updateApplication(string $id, array $data)

@@ -22,5 +22,9 @@ class Application extends Model
         'application_link',
     ];
 
+    public function cvs()
+    {
+        return $this->belongsTo(Cvs::class, 'cv_id', 'id');
+    }
     
 }

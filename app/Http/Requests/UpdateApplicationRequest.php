@@ -23,9 +23,9 @@ class UpdateApplicationRequest extends FormRequest
     {
         return [
             'cv_id' => 'required',
-            'company' => 'required|string|max:255',
-            'application_status' => 'required|string|in:pending,approved,denied',
-            'application_link' => 'required|url',
+            'company' => 'nullable|string|max:255',
+            'application_status' => 'nullable|string',
+            'application_link' => 'nullable|url',
         ];
     }
 }
