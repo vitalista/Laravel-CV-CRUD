@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 use App\Models\Cvs;
+use Illuminate\Support\Facades\DB;
 
 class CvsService{
 
@@ -19,8 +20,18 @@ class CvsService{
             'work_experince' => $data['work_experince'],
         ];
 
-        $application = Cvs::create($data);
-        $data['id'] = $application->id;
+        $cv = Cvs::create($data);
+        $cvId = $cv->id;
+        $data['id'] = $cvId;
+
+        DB::table('application')->insert([
+            'cv_id' => $cvId,
+            'application_status' => '',
+            'application_link' => '',
+            'company' => '',
+            'created_at' => now(),
+        ]);
+
         return $data;
     }
 

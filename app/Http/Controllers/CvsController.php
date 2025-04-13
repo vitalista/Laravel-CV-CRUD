@@ -6,6 +6,7 @@ use App\Services\CvsService;
 use App\Http\Requests\StoreCvsRequest;
 use App\Http\Requests\UpdateCvsRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 
 class CvsController extends Controller
 {
@@ -31,11 +32,11 @@ class CvsController extends Controller
 
         $validatedData = $request->validated();
         $cvs = $this->cvsService->storeCv($validatedData);
+
         return response()->json([
             'message' => 'Cv created successfully',
             'application' => $cvs
         ]);
-
     }
 
     // public function create(): JsonResponse{
